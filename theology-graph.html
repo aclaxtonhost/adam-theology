@@ -96,6 +96,24 @@
   @media (max-width:760px){
     #panel{position:fixed; right:0; top:0; bottom:0; max-width:86vw; box-shadow:-8px 0 24px rgba(0,0,0,.15); z-index:5}
     .controls{width:100%}
+    @media (max-width: 760px) {
+  #graphwrap { overflow: auto; }
+  svg { 
+    width: 100% !important; 
+    height: auto !important; 
+    max-width: none;
+  }
+  .node text { font-size: 9px !important; }
+  .controls { flex-direction: column; align-items: flex-start; }
+  header { padding: 16px 12px; }
+  main { flex-direction: column; }
+  #panel { 
+    width: 100%; 
+    max-width: 100%; 
+    border-left: none; 
+    border-top: 1px solid var(--line); 
+  }
+}
   }
 </style>
 </head>
