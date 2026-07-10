@@ -61,6 +61,8 @@
     overflow-y:auto; padding:22px 24px 40px; display:none;
   }
   #panel.open{display:block}
+  .pclose{float:right;font:22px/1 system-ui,sans-serif;background:none;border:none;color:var(--soft);cursor:pointer;padding:2px 8px;margin:-4px -10px 0 10px}
+  .pclose:hover{color:var(--ox)}
   #panel .pdomain{font-family:system-ui,sans-serif; font-size:10px; letter-spacing:.2em;
     text-transform:uppercase; margin-bottom:6px}
   #panel h2{font-size:23px; font-weight:500; line-height:1.15; margin-bottom:2px}
@@ -247,7 +249,8 @@ const esc=s=>s.replace(/[&<>"]/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&qu
 function renderPanel(id){
   const c=byId[id], d=dinfo(id);
   const req=dependents[id].map(x=>byId[x]);
-  let h=`<div class="pdomain" style="color:${d.color}">${d.label} · Band ${c.band}</div>
+  let h=`<button class="pclose" onclick="clearSel()" aria-label="Close">×</button>
+    <div class="pdomain" style="color:${d.color}">${d.label} · Band ${c.band}</div>
     <h2>${esc(c.name)}</h2><div class="pid">${c.id}</div>
     <div class="summary">${esc(c.summary)}</div>
     <h3>Scripture</h3><div class="chips">${c.scripture.map(s=>`<span class="chip">${esc(s)}</span>`).join("")}</div>
@@ -273,6 +276,7 @@ function renderPanel(id){
   panel.innerHTML=h; panel.classList.add("open"); panel.scrollTop=0;
 }
 window.select=select;
+window.clearSel=clearSel;
 </script>
 </body>
 </html>
